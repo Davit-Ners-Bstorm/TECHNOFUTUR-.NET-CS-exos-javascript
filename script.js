@@ -50,3 +50,95 @@ imcBtn.addEventListener('click', () => {
 
 
 })
+
+
+// Exercice 3
+const dateInput = document.getElementById('dob');
+const ageBtn = document.getElementById('ageBtn');
+const ageResultat = document.getElementById('dateResult');
+
+ageBtn.addEventListener('click', () => {
+    const birthDateValue = dateInput.value;
+
+    if (!birthDateValue) {
+        ageResultat.textContent = 'Encode ta date de naissance';
+        return;
+    }
+
+    const birthDate = new Date(birthDateValue);
+    const today = new Date();
+
+    if (birthDate > today) {
+        ageResultat.textContent = 'Tu peux pas être né dans le futur';
+        return;
+    }
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    if (days < 0) {
+        months--;
+
+        const daysInPreviousMonth = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0
+        ).getDate();
+
+        days += daysInPreviousMonth;
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    ageResultat.textContent = `Vous avez ${years} an${years > 1 ? 's' : ''}, ${months} mois et ${days} jours;`;
+});
+
+
+
+// Exercice : Controlleur d'accès
+const niveauInput  = document.getElementById("niveau");
+const heureInput   = document.getElementById("heure");
+const badgeInput   = document.getElementById("badge");
+const btnVerifier  = document.getElementById("btnVerifier");
+const statut       = document.getElementById("statut");
+const message      = document.getElementById("message");
+
+btnVerifier.addEventListener('click', () => {
+    const niveau = niveauInput.valueAsNumber;
+    const heure = heureInput.valueAsNumber;
+
+    if (!niveau || isNaN(heure)) {
+        statut.textContent = "Erreur";
+        message.textContent = "Complète tout les champs";
+        return;
+    }
+
+    const badgeActif = badgeInput.checked;
+    const horaireOuverts = heure >= 8 && heure <= 20;
+
+    if (!badgeActif) {
+        statut.textContent = 'ACCES REFUSÉ';
+        message.textContent = 'Badge desactivé';
+    }
+    else if (niveau < 3) {
+        statut.textContent = 'ACCES REFUSÉ';
+        message.textContent = "Habillitation insuffisante";
+    }
+    else if (niveau === 5) {
+        statut.textContent = 'ACCES AUTORISÉ';
+        message.textContent = "Welcome Admin";
+    }
+    else if (!horaireOuverts) {
+        statut.textContent = 'ACCES REFUSÉ';
+        message.textContent = "Mauvais horaire";
+    }
+    else {
+        statut.textContent = 'ACCES AUTORISÉ';
+        message.textContent = "Welcome";
+    }
+
+});
