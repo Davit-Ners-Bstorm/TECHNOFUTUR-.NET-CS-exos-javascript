@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <title>Memory Game</title>
+</head>
+<body>
+
+  <header>
+    <h1>Memory Game</h1>
+    <p>Retrouve toutes les paires</p>
+  </header>
+ 
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value" id="stat-moves">0</div>
+      <div class="stat-label">Tentatives</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-pairs">0/8</div>
+      <div class="stat-label">Paires</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="stat-time">0s</div>
+      <div class="stat-label">Temps</div>
+    </div>
+  </div>
+ 
+  <div id="game-board"></div>
+ 
+  <div id="victory-msg">
+    <p>GG</p>
+    <p id="victory-detail"></p>
+  </div>
+ 
+  <button id="btn-restart">Rejouer</button>
+  
+</body>
+</html>
