@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Pokédex</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Mini Pokédex</h1>
+
+    <form id="formulaire-recherche">
+        <input type="text" id="input-pokemon" placeholder="Nom ou numéro du Pokémon" required>
+        <button type="submit">Chercher</button>
+        <button type="button" id="bouton-aleatoire">Pokémon aléatoire</button>
+    </form>
+
+    <label class="option-shiny">
+        <input type="checkbox" id="version-shiny">
+        Version shiny
+    </label>
+
+    <p id="chargement" role="status" aria-live="polite" hidden>Recherche en cours...</p>
+    <p id="message-erreur" role="alert"></p>
+    <div id="carte-pokemon"></div>
+
+    <section id="section-historique" hidden>
+        <h2>Historique</h2>
+        <ul id="historique-recherches"></ul>
+    </section>
+</body>
+</html>
